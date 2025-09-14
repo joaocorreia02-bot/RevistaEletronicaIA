@@ -1,13 +1,374 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA</title>
+    <title>Revista de Inteligência Artificial</title>
+    <style>
+        /* Estilos Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        section {
+            margin: 40px 0;
+            padding: 30px 0;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Header e Navegação */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-button:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Banner Principal */
+        .banner {
+            background-color: #34495e;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        
+        .banner h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .banner p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Seção Projeções Futuro */
+        .projections {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .projections h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+        
+        .columns {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .column {
+            flex: 0 0 30%;
+            margin-bottom: 20px;
+        }
+        
+        .column ul {
+            list-style-type: none;
+        }
+        
+        .column li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        /* Seção História */
+        .history {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .history-image {
+            flex: 0 0 40%;
+            padding-right: 30px;
+        }
+        
+        .history-text {
+            flex: 0 0 60%;
+        }
+        
+        /* Seção Pontos Positivos e Negativos */
+        .pros-cons {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .pros-cons-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .pros-cons-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .pros, .cons {
+            flex: 0 0 48%;
+            margin-bottom: 20px;
+        }
+        
+        .pros h3 {
+            color: #27ae60;
+        }
+        
+        .cons h3 {
+            color: #e74c3c;
+        }
+        
+        /* Seção IA na Prática */
+        .practice {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .practice-image {
+            flex: 0 0 40%;
+            padding-right: 30px;
+        }
+        
+        .practice-text {
+            flex: 0 0 60%;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        
+        .signature {
+            font-style: italic;
+            margin-top: 20px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .column {
+                flex: 0 0 48%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .history, .practice {
+                flex-direction: column;
+            }
+            
+            .history-image, .practice-image {
+                padding-right: 0;
+                margin-bottom: 20px;
+                width: 100%;
+            }
+            
+            .column {
+                flex: 0 0 100%;
+            }
+            
+            .pros, .cons {
+                flex: 0 0 100%;
+            }
+            
+            .nav-button {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>oi</h1>
-    <p>teste</p>
-    <p>teste 2</p>
+    <header>
+        <div class="container">
+            <div class="logo">Revista de IA</div>
+            <nav>
+                <button class="nav-button">Home</button>
+                <button class="nav-button">História</button>
+                <button class="nav-button">Futuro</button>
+                <button class="nav-button">Aplicações</button>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="banner">
+            <h1>Revista Eletrônica de Inteligência Artificial</h1>
+            <p>Explorando o passado, presente e futuro da IA e seu impacto na sociedade</p>
+        </section>
+        
+        <section class="projections">
+            <h2>Projeções para o futuro da IA</h2>
+            <div class="columns">
+                <div class="column">
+                    <ul>
+                        <li>Avansos em aprendizado profundo</li>
+                        <li>IA generativa mais sofisticada</li>
+                        <li>Personalização em larga escala</li>
+                        <li>Automação de tarefas complexas</li>
+                        <li>Integração com IoT</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <ul>
+                        <li>Medicina personalizada com IA</li>
+                        <li>Carros autônomos generalizados</li>
+                        <li>Assistentes virtuais avançados</li>
+                        <li>Ética e regulamentação</li>
+                        <li>IA quântica</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <ul>
+                        <li>Educação adaptativa</li>
+                        <li>Cidades inteligentes</li>
+                        <li>Robótica avançada</li>
+                        <li>Sistemas de recomendação</li>
+                        <li>IA explicável</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="history">
+            <div class="history-image">
+                <img src="https://placehold.co/600x400/2c3e50/ffffff?text=História+da+IA" alt="História da Inteligência Artificial">
+            </div>
+            <div class="history-text">
+                <h2>História da I.A.</h2>
+                <p>A Inteligência Artificial tem suas raízes em meados do século XX, quando cientistas começaram a explorar se máquinas poderiam pensar. O termo "Inteligência Artificial" foi cunhado em 1956 por John McCarthy durante a conferência de Dartmouth.</p>
+                <p>Nas décadas seguintes, a área passou por altos e baixos, com períodos de otimismo e investimento seguidos por "invernos da IA" onde o progresso foi mais lento que o esperado.</p>
+                <p>O surgimento do aprendizado de máquina e, mais recentemente, do aprendizado profundo, revitalizou o campo e levou aos avanços impressionantes que testemunhamos hoje.</p>
+                <p>Desde sistemas especialistas até redes neurais complexas, a jornada da IA tem sido marcada por inovações revolucionárias que continuam a moldar nosso futuro.</p>
+            </div>
+        </section>
+        
+        <section class="pros-cons">
+            <div class="pros-cons-header">
+                <h2>Impacto da Inteligência Artificial</h2>
+            </div>
+            <div class="pros-cons-content">
+                <div class="pros">
+                    <h3>Pontos Positivos</h3>
+                    <ul>
+                        <li>Automatização de tarefas repetitivas</li>
+                        <li>Melhoria na eficiência e produtividade</li>
+                        <li>Avansos na área da saúde</li>
+                        <li>Personalização de experiências</li>
+                        <li>Previsões mais precisas</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h3>Pontos Negativos</h3>
+                    <ul>
+                        <li>Deslocamento de postos de trabalho</li>
+                        <li>Vieses algorítmicos</li>
+                        <li>Questões de privacidade</li>
+                        <li>Dependência tecnológica</li>
+                        <li>Desafios de regulamentação</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="practice">
+            <div class="practice-image">
+                <img src="https://placehold.co/600x400/3498db/ffffff?text=IA+na+Prática" alt="IA na Prática">
+            </div>
+            <div class="practice-text">
+                <h2>IA na Prática</h2>
+                <p>A Inteligência Artificial já está integrada em muitos aspectos do nosso cotidiano, desde recomendações de streaming até assistentes de voz em nossos smartphones.</p>
+                <p>No setor de saúde, a IA ajuda no diagnóstico de doenças e na descoberta de novos medicamentos. No varejo, algoritmos preveem demandas e otimizam cadeias de suprimentos.</p>
+                <p>Empresas usam IA para análise de sentimentos, atendimento ao cliente via chatbots e detecção de fraudes. No transporte, sistemas inteligentes melhoram o fluxo de tráfego e a segurança.</p>
+                <p>À medida que a tecnologia avança, novas aplicações surgem, transformando indústrias e criando oportunidades anteriormente inimagináveis.</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>Revista Eletrônica de Inteligência Artificial © 2025</p>
+            <p class="signature">Piola Jasmar Santos</p>
+        </div>
+    </footer>
 </body>
 </html>
